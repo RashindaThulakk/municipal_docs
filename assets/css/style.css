@@ -1,0 +1,25 @@
+/* Header with background (only header) */
+.app-header {
+  background-image: url('../images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 28px 0;
+}
+.app-header h1 { margin:0; font-weight:700; font-size:28px; }
+
+/* Layout panels */
+.left-panel { background:#f8f9fa; padding:18px; border-radius:6px; border:1px solid #e0e0e0; }
+.right-panel { padding:12px; border-radius:6px; border:1px solid #e0e0e0; background:#ffffff; }
+
+/* Large action button */
+.btn-big { padding:12px 18px; font-size:16px; }
+
+/* Table responsiveness */
+.table-wrap { max-height:68vh; overflow:auto; }
+
+/* Small screens */
+@media (max-width: 767px) {
+  .left-panel, .right-panel { margin-bottom: 15px; }
+  .btn-big { width:100%; display:block; }
+}

@@ -1,0 +1,12 @@
+http://localhost/municipal_docs/dashboard.php
+
+http://localhost/phpmyadmin
+
+admin	Admin@123
+
+clark	Clark@123
+
+user	User@123
+
+//Rashinda	Admin1@#$
+

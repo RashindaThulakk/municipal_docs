@@ -1,0 +1,132 @@
+	OPEN xampp -> GO TO shell -> 
+
+	mysql -u root; //in shell
+
+	show databases;
+	use municipal_docs;
+
+	show tables;
++--------------------------+
+| Tables_in_municipal_docs |
++--------------------------+
+| building_applications    |
+| users                    |
++--------------------------+
+2 rows in set (0.001 sec)
+
+
+SELECT * from building_applications;
+
+SELECT ba_no,year,notes from building applications;
+
+SELECT ba_no, year, officer_received, date_taken
+FROM building_applications
+WHERE date_taken IS NOT NULL;
+
+	-- Get all records--
+SELECT * FROM building_applications;
+
+-- Get only specific columns
+SELECT ba_no, year, applicant_name, officer_received FROM building_applications;
+
+-- Get records with NOT NULL date_taken
+SELECT ba_no, year, officer_received, date_taken 
+FROM building_applications
+WHERE date_taken IS NOT NULL;
+
+-- Get records where applicant_name contains 'Perera'
+SELECT * FROM building_applications
+WHERE applicant_name LIKE '%Perera%';
+
+-- Count total applications
+SELECT COUNT(*) AS total_records FROM building_applications;
+
+
+........................................................................
+
+
+	-filtering queries
+
+-- Get all records
+SELECT * FROM building_applications;
+
+-- Get only specific columns
+SELECT ba_no, year, applicant_name, officer_received FROM building_applications;
+
+-- Get records with NOT NULL date_taken
+SELECT ba_no, year, officer_received, date_taken 
+FROM building_applications
+WHERE date_taken IS NOT NULL;
+
+-- Get records where applicant_name contains 'Perera'
+SELECT * FROM building_applications
+WHERE applicant_name LIKE '%Perera%';
+
+-- Count total applications
+SELECT COUNT(*) AS total_records FROM building_applications;
+
+
+.............................................................................
+
+
+
+	-sorting and limiting-
+
+-- Sort by year (newest first)
+SELECT * FROM building_applications ORDER BY year DESC;
+
+-- Get the latest 5 records
+SELECT * FROM building_applications ORDER BY created_at DESC LIMIT 5;
+
+-- Get the earliest 10 records
+SELECT * FROM building_applications ORDER BY created_at ASC LIMIT 10;
+
+
+...............................................................................
+
+	-Aggration Queries-
+
+-- Count applications per year
+MariaDB [municipal_docs]> SELECT year, COUNT(*) AS total FROM building_applications GROUP BY year;
++------+-------+
+| year | total |
++------+-------+
+| 2007 |     1 |
+| 2012 |     1 |
+| 2015 |    59 |
+| 2017 |     1 |
+| 2018 |    10 |
+| 2025 |     1 |
++------+-------+
+
+
+
+-- Count applications per officer
+SELECT officer_received, COUNT(*) AS total FROM building_applications GROUP BY officer_received;
+
+-- Count applications per rack
+SELECT rack_number, COUNT(*) AS total FROM building_applications GROUP BY rack_number;
+
+................................................................................
+
+
+	-Queries with Conditions-
+
+
+-- Applications taken after 2023-01-01
+SELECT * FROM building_applications WHERE date_taken > '2023-01-01';
+
+-- Applications stored in Rack 'A'
+SELECT * FROM building_applications WHERE rack_number = 'A';
+
+-- Applications with BA number starting with 'BA-100'
+SELECT * FROM building_applications WHERE ba_no LIKE 'BA-100%';
+
+............................................................................
+
+First run these queries in MariaDB (mysql CLI or phpMyAdmin).
+
+Then make small PHP files for each query (like fetch_by_year.php).
+
+Finally call them with jQuery AJAX and display in an HTML table.
+

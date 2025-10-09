@@ -1,0 +1,131 @@
+	📘 SQL Study Sheet – building_applications
+
+
+SELECT → Read data
+
+INSERT → Add data
+
+UPDATE → Edit data
+
+DELETE → Remove data
+
+CREATE → Create table/database
+
+ALTER → Change structure
+
+DROP / TRUNCATE → Delete table or clear data
+
+
+📘 SQL Study Sheet – building_applications
+🔹 1. SELECT – Read Data
+-- Get all records
+SELECT * FROM building_applications;
+
+-- Get only applicant name & BA number
+SELECT ba_no, applicant_name FROM building_applications;
+
+-- Applications where date is not null
+SELECT * FROM building_applications WHERE date_taken IS NOT NULL;
+
+-- Search applicants with "Perera"
+SELECT * FROM building_applications WHERE applicant_name LIKE '%Perera%';
+
+-- Order by year (latest first)
+SELECT * FROM building_applications ORDER BY year DESC;
+
+-- Get first 5 applications
+SELECT * FROM building_applications LIMIT 5;
+
+-- Count total applications
+SELECT COUNT(*) AS total FROM building_applications;
+
+🔹 2. INSERT – Add Data
+-- Add a new application
+INSERT INTO building_applications
+(ba_no, year, rack_number, applicant_name, applicant_id, officer_received, date_taken)
+VALUES
+('BA-2025-001', 2025, 'A1', 'Sunil Perera', 'NIC1001', 'Kumara', '2025-08-27');
+
+🔹 3. UPDATE – Modify Data
+-- Update officer name for a record
+UPDATE building_applications
+SET officer_received = 'Perera'
+WHERE ba_no = 'BA-2025-001';
+
+-- Change rack for an applicant
+UPDATE building_applications
+SET rack_number = 'B2'
+WHERE applicant_name = 'Sunil Perera';
+
+🔹 4. DELETE – Remove Data
+-- Delete one record
+DELETE FROM building_applications WHERE ba_no = 'BA-2025-001';
+
+-- Delete all records from 2020
+DELETE FROM building_applications WHERE year = 2020;
+
+🔹 5. CREATE – New Table
+CREATE TABLE officers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    designation VARCHAR(50)
+);
+
+🔹 6. ALTER – Change Table
+-- Add new column for status
+ALTER TABLE building_applications ADD COLUMN status VARCHAR(20);
+
+-- Rename column "notes" to "remarks"
+ALTER TABLE building_applications CHANGE COLUMN notes remarks TEXT;
+
+-- Delete a column
+ALTER TABLE building_applications DROP COLUMN assessment_ward;
+
+🔹 7. DROP / TRUNCATE
+-- Remove all rows but keep table
+TRUNCATE TABLE building_applications;
+
+-- Delete the officers table completely
+DROP TABLE officers;
+
+🔹 8. JOINS – Combine Tables
+-- Match officer name with officer table (example)
+SELECT b.ba_no, b.applicant_name, o.designation
+FROM building_applications b
+JOIN officers o ON b.officer_received = o.name;
+
+🔹 9. Aggregates (GROUP BY)
+-- Count applications per year
+SELECT year, COUNT(*) AS total FROM building_applications GROUP BY year;
+
+-- Count applications handled by each officer
+SELECT officer_received, COUNT(*) AS total FROM building_applications GROUP BY officer_received;
+
+-- Applicants with more than 2 applications
+SELECT applicant_name, COUNT(*) AS total
+FROM building_applications
+GROUP BY applicant_name
+HAVING COUNT(*) > 2;
+
+🔹 10. Subqueries
+-- Applications with the latest taken date
+SELECT * FROM building_applications
+WHERE date_taken = (SELECT MAX(date_taken) FROM building_applications);
+
+-- Applications stored in racks with more than 10 records
+SELECT * FROM building_applications
+WHERE rack_number IN (
+    SELECT rack_number FROM building_applications GROUP BY rack_number HAVING COUNT(*) > 10
+);
+
+
+✅ This covers all main SQL commands you need to practice.
+My advice:
+
+Start with SELECT (safe to try anytime).
+
+Then try INSERT and check with SELECT.
+
+Practice UPDATE and DELETE carefully (maybe on test data first).
+
+Explore GROUP BY, JOIN, and subqueries as you get comfortable.

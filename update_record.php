@@ -1,0 +1,6 @@
+// pseudo
+if (file uploaded) {
+  update ... set attachment = ?, attachment_type = ? ...
+} else {
+  update ... without attachment columns ...
+}
