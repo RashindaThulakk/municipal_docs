@@ -15,7 +15,7 @@ $cards = [
   ['file'=>'dashboard_sd.php','title'=>'SD Dashboard','desc'=>'Sub Division','icon'=>'collection','roles'=>['Admin','Clerk','User']],
   ['file'=>'assessment_dashboard.php','title'=>'Record Books','desc'=>'Assessment data','icon'=>'clipboard-data','roles'=>['Admin','Clerk','User']],
   ['file'=>'attendance_dashboard.php','title'=>'Attendance Records','desc'=>'Staff attendance','icon'=>'people','roles'=>['Admin','Clerk']],
-  ['file'=>'finance_dashboard.php','title'=>'Files','desc'=>'Invoices, payments','icon'=>'cash-stack','roles'=>['Admin','Clerk']],
+  ['file'=>'d_finance/salary_records/dashboardSalaryRecords','title'=>'Files','desc'=>'Invoices, payments','icon'=>'cash-stack','roles'=>['Admin','Clerk']],
   ['file'=>'engineering_dashboard.php','title'=>'Personal Files','desc'=>'Engineering docs','icon'=>'gear','roles'=>['Admin','Clerk','User']],
   ['file'=>'secretary_dashboard.php','title'=>'Secretary Records','desc'=>'Meetings & minutes','icon'=>'file-text','roles'=>['Admin','Clerk','User']],
 
