@@ -1,8 +1,9 @@
 <?php
 require 'includes/auth.php';
 require_login();    // blocks anonymous access
-
-include 'includes/header_main.php';
+$page_title = "Municipal Document System";
+include 'includes/header.php';
+//include 'includes/header_main.php';
 
 
 

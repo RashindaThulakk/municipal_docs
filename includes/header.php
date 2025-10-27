@@ -14,7 +14,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 <body>
   <header class="app-header">
     <div class="container">
-      <h1>Building Application Dashboard</h1>
+     <h1><?php echo isset($page_title) ? htmlspecialchars($page_title) : 'Municipal Document System'; ?></h1>
     </div>
   </header>
 

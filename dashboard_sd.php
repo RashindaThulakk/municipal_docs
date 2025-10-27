@@ -2,7 +2,9 @@
 require 'includes/auth.php';
 require_login();
 require 'includes/db_connect.php';
-include 'includes/header_sd.php';
+$page_title = "Sub Division Dashboard";
+include 'includes/header.php';
+//include 'includes/header_sd.php';
 
 // If editing, load the record to prefill the left form
 $edit = null;

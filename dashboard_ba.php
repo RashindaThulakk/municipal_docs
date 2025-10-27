@@ -2,7 +2,9 @@
 require 'includes/auth.php';
 require_login();
 require 'includes/db_connect.php';
-include 'includes/header_ba.php';
+$page_title = "Building Application Dashboard";
+include 'includes/header.php';
+//include 'includes/header_ba.php';
 
 // If editing, load the record to prefill the left form
 $edit = null;
@@ -25,7 +27,7 @@ $app_search = "%$applicant_id%";
 $sql = "SELECT id, ba_no, year, rack_number, applicant_name, applicant_id, assessment_ward, created_at
         FROM building_applications
         WHERE ba_no LIKE ? AND CAST(year AS CHAR) LIKE ? AND applicant_id LIKE ?
-        ORDER BY created_at DESC
+        ORDER BY year DESC, ba_no ASC
         LIMIT 200";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$ba_search, $year_search, $app_search]);

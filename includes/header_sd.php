@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 ?>
 <!doctype html>
@@ -30,4 +30,4 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
   </nav>
 
 <div class="container-fluid mt-3">
-        <!-- #header end -->
+        #header end -->
